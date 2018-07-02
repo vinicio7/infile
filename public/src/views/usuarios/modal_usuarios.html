@@ -1,0 +1,44 @@
+<div class="modal-style">
+    <div class="modal-header clearfix">
+        <h4 ng-if="action == 'new'" class="modal-title">Nuevo Usuario</h4>
+        <h4 ng-if="action == 'update'" class="modal-title">Editar Usuario</h4>
+        <h4 ng-if="action == 'delete'" class="modal-title">Eliminar Usuario</h4>
+        <span class="close ion ion-android-close" ng-click="modalClose()"></span>
+    </div>
+    <div class="modal-body">
+        <div class="row form-group" ng-if="action == 'delete'">
+            <h3>¿Está seguro de eliminar este Usuario?</h3>
+        </div>
+        <form class="form-horizontal" name="form" ng-if="action != 'delete'" action="javascript:;" novalidate>
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" ng-model="usuario.nombre" required>
+                </div>
+                <div class="col-sm-6">
+                    <label>Dirección</label>
+                    <input type="text" class="form-control" ng-model="usuario.direccion" required>
+                </div>
+                <div class="col-sm-6">
+                    <br>
+                    <label>Telefono</label>
+                    <input type="text" class="form-control" ng-model="usuario.telefono" required>
+                    <input type="text" ng-model="usuario.token" value="4dq1lkSRwMQa656D6Vzty07Q1ljtJ56X9CpMILlyKurIitXFkENIOusRPdtS" style="display: none">
+                </div>
+            </div>        
+            <div class="row form-group">
+                <div class="col-sm-12 text-right">
+                    <button class="btn btn-danger" ng-click="modalClose()">Cerrar</button>
+                    <button class="btn btn-success" ng-if="action == 'new'" ng-disabled="form.$invalid" ng-click="saveData(usuario)">Registrar</button>
+                    <button class="btn btn-success" ng-if="action == 'update'" ng-disabled="form.$invalid" ng-click="saveData(usuario)">Editar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-10 text-right">
+            <button class="btn btn-success" ng-if="action == 'delete'" ng-click="modalClose()">Cerrar</button>
+            <button class="btn btn-danger"  ng-if="action == 'delete'" ng-click="saveData(usuario)">Eliminar</button>
+        </div>
+    </div>
+</div>
